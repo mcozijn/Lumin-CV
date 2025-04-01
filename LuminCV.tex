@@ -1,0 +1,246 @@
+%
+% LuminCV 1.0 LaTeX template.
+% Author: M. Cozijn
+% 
+% A user-friendly minimalist template focused on color customization 
+% and a layout that promotes ease of reading by aligning key
+% information along the central divider.
+%
+% Inspired by & loosely based on Andreï V. Kostyrka's: 
+% LuxSleek-CV 1.1 LaTeX template.
+%
+% This template is designed to expand on customisation options by 
+% streamlining colour customisation whilst trying to maintain 
+% the ease of use and transparancy integral to the original
+% by avoiding the reliance on hardcoding. 
+% 
+% 
+
+\documentclass[11pt, a4paper]{article}
+\usepackage[left = 0mm, right = 0mm, top = 0mm, bottom = 0mm]{geometry}
+\usepackage[stretch = 25, shrink = 25, tracking=true, letterspace=30]{microtype}
+\usepackage[colorlinks = true, urlcolor = black, linkcolor = black]{hyperref}
+\usepackage{graphicx}               % To insert pictures
+\usepackage{xcolor}                 % To add colour to the document
+\usepackage{xspace}                 % To add better command spacing
+\usepackage{fontawesome}            % Provides icons for the contact details
+\usepackage{enumitem}               % To redefine spacing in lists
+\usepackage{amsmath,amssymb}        % To use math & symbols
+
+
+\renewcommand{\familydefault}{bch}
+\setlist{parsep = 0pt, topsep = 0pt, partopsep = 1pt, itemsep = 1pt, leftmargin = 6mm}
+
+%%%%%%% COLOUR DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%           Blue : 74ADE8           Orange: F98745          Green: A1C181
+%%%%%%% Left box %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{LH}{HTML}{000000}              % Header
+\definecolor{LS}{HTML}{F98745}              % Separator line
+%%%%%%% Divider %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{PD}{HTML}{F98745}              % Page divider
+%%%%%%% Right box %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{RH}{HTML}{F98745}              % Header
+\definecolor{RS}{HTML}{F98745}              % Separator line
+%%%%%%% Accents %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{PTN}{HTML}{F98745}             % Punctuation
+\definecolor{ICON}{HTML}{F98745}            % Contact icons
+\definecolor{LST}{HTML}{F98745}             % List label
+
+%%%%%%% COMMAND DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Punctuation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\cvbullet}{{\color{PTN}$\circ$}}               % Bullet
+\newcommand{\cvslash}{{\color{PTN}/}\xspace}               % /
+\newcommand{\cvdash}{{\color{PTN}-}\xspace}                % -
+\newcommand{\cvcolon}{{\color{PTN}:}\xspace}               % :
+
+%%%%%%% List Formatting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\listsym}{$\circ$}                                          % List Label
+\newcommand{\smaller}[1]{{{\small{\color{LST}\listsym} #1}}}            % List Left - Right Small
+\newcommand{\rlist}[1]{{#1 \color{LST}\listsym}}                        % List Right - Left Normalsize
+
+%%%%%%% Indivicual Formatting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\dates}[1]{\hfill\mbox{{\small\textit{\textbf{#1}}}}}       % Dates
+\newcommand{\digits}[1]{{{\raisebox{-0.7pt}{#1}}}}                      % Digit spacing for icons
+
+%%%%%%% Spacing %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\is}{\par\vskip.5ex plus .4ex \vskip 13.6pt}                        % Item spacing
+\newcommand{\lis}{\par\vskip.5ex plus .4ex}                                     % List item spacing
+\newcommand{\cis}{\par\vskip -.5ex plus -.4ex}                                  % Compact item spacing
+
+%%%%%%% Contact Icons %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Iscale}[1]{\raisebox{-1.6pt}{\scalebox{1.1}{{\color{ICON}#1}}}}            % Default Icon Scaling
+\newcommand{\cvgh}{\Iscale{\faGithubSquare}}                                            % GitHub
+\newcommand{\cvin}{\Iscale{\faLinkedinSquare}}                                          % LinkedIn
+\newcommand{\cvtel}{\Iscale{\faPhoneSquare}}                                            % Phone No.
+\newcommand{\cvmail}{\Iscale{{\makebox[0ex][l]\faSquare}{\hspace*{1pt}%                 % Email
+    \raisebox{1.5pt}{\scalebox{0.6}{{\color{white}\faPaperPlane}}}}}\hspace*{1.8pt}}
+
+%%%%%%% Section Formatting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\headleft}[1]{\vspace*{3ex}{\color{LH}\textsc{\textbf{#1}}}\par%                % Left header
+    \vspace*{-1.5ex}{\color{LS}\hrulefill}\par\vspace*{0.7ex}}
+\newcommand{\headright}[1]{\vspace*{2.5ex}\textsc{\Large\color{RH}#1}\par%                  % Right header
+     \vspace*{-2ex}{\color{RS}\hrulefill}\par}
+\newcommand{\cvexp}[3]{{\textsc{#1} - \textit{#2} \dates{#3}}}                              % Experience 
+\newcommand{\cvedu}[3]{\textsc{#1}\\ \textit{#2} \dates{#3}}                                % Education
+\newcommand{\divider}{{\color{PD}\rotatebox{270}{\hspace{4.45mm}\hbox to .97\textheight{%   % Divider
+    \leaders\hbox to 5.5pt{\hss \scalebox{0.175}{$\blacksquare$}\hss}\hfil}}}}
+
+%%%%%%% DOCUMENT START %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Spacing definition %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\setlength{\topskip}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\fboxsep}{0pt}
+\thispagestyle{empty}
+\raggedbottom
+
+%%%%%%% Left box definition %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}[t]{0.31\textwidth} %% Left column -- outer definition
+\vspace{2ex}
+\colorbox{white!90}{\color{black}  %% LEFT BOX
+\kern0.09\textwidth\relax% Left margin provided explicitly
+\begin{minipage}[t][293mm][t]{0.82\textwidth}
+\raggedleft
+\vspace*{2.5ex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                               LEFT BOX START
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%% NAME %%%%%%%%
+\LARGE John Doe \normalsize
+
+%%%%%%% PHOTO %%%%%%%
+\null\hfill\includegraphics[width=0.65\textwidth]{default.png}\hfill\null
+\vspace*{0.5ex} % Extra space after the picture
+
+%%%%%% SECTIONS %%%%%
+\headleft{Contact Details}
+\texttt{%
+    \small
+    \href{mailto:johndoe@gmail.com}{johndoe@gmail.com \cvmail}\\[0.5ex]%
+    \href{tel:+00612345678}{\digits{+00\,6\,12\,34\,56\,78} \cvtel}\\[0.5ex]%
+    %\vspace*{2ex}%
+    \href{https://www.linkedin.com/in/johndoe/}{in/johndoe \cvin}\\[0.5ex]%
+    \href{https://github.com/johndoe}{github.com/johndoe \cvgh}\\[0.6ex]%
+}
+
+\normalsize
+
+\headleft{Personal Information}
+
+    \small 
+    01-01-1990 \\[0.4ex]
+    \normalsize
+    placestreet 1-A, \\[-0.5ex] 
+    1234 AA, City
+
+\headleft{Languages}
+
+    \rlist{English}
+    \lis
+    \rlist{Other}
+
+
+\headleft{General Skills}
+
+    \rlist{Skill 1}
+    \lis
+    \rlist{Skill 2}
+    \lis
+    \rlist{Skill 3}
+    \lis
+    \rlist{Skill 4}
+
+
+\headleft{Technical Skills}
+
+    \rlist{Skill 1 \cvslash Skill 2 \cvslash Skill 3}
+    \lis
+    \rlist{Skill 4 \cvslash Skill 5 \cvslash Skill 6}
+    \lis
+    \rlist{Skill 7 \cvslash Skill 8 \cvslash Skill 9}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                               LEFT BOX END
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{minipage}%
+\kern0.09\textwidth\relax%%Right margin provided explicitly to stretch the colourbox
+}
+\end{minipage}% Right column
+%%%%%%%% Divider %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}[t]{0.02\textwidth}
+    \divider
+\end{minipage}
+%
+%%%%%%% Right box definition %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hskip0.5em% Left margin for the white area
+\begin{minipage}[t]{0.57\textwidth}
+\setlength{\parskip}{0.8ex}
+\vspace{2ex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                               RIGHT BOX START
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\headright{Profile}
+	Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam lobortis facilisis sem. Nullam nec mi et neque pharetra sollicitudin. Praesent imperdiet mi nec ante.
+
+	Donec ullamcorper, felis non sodales commodo, lectus velit ultrices augue, a dignissim nibh lectus placerat pede. Vivamus nunc nunc, molestie ut, ultricies vel, semper in, velit
+
+\headright{Experience}
+{%
+    \cvexp{Position 1}{Company 1}{Start--End}\\
+    {%
+        \small 
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam lobortis facilisis sem. Nullam nec mi et neque pharetra sollicitudin. Praesent imperdiet mi nec ante.
+    }\\
+        \smaller{Notable point 1}
+        
+        \smaller{Notable point 2}
+
+        \smaller{Notable point 3 \cvslash 3.5}
+
+    \is
+    
+    \cvexp{Position 2}{Company 2}{Start--End}\\
+    {%
+        \small 
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam lobortis facilisis sem. Nullam nec mi et neque pharetra sollicitudin. Praesent imperdiet mi nec ante.
+    }\\
+        \smaller{Notable point 1}
+
+        \smaller{Notable point 2}
+
+        \smaller{Notable point 3 \cvslash 3.5}
+}
+
+\headright{Education}
+
+    \cvedu{Degree 1}{Institution 1}{Start--End}
+    \is
+    \cvedu{Degree 2}{Institution 2}{Start--End}
+    \is
+    \cvedu{Degree 3}{Institution 3}{Start--End}
+
+\headright{Volunteering work}
+
+    \cvexp{Position 1}{Organisation 1}{Start--End}\\
+    \smaller{Notable project 1\cvcolon \textsl{project position 1}}
+    \cis
+    \smaller{Notable project 2\cvcolon \textsl{project position 2}}
+
+    
+\headright{Hobbies}
+{%
+    \small
+    \textsl{Hobby 1} \cvslash
+    \textsl{Hobby 2} \cvslash
+    \textsl{Hobby 3} \\ 
+    \textsl{Hobby 4} \cvslash
+    \textsl{Hobby 5}
+}
+
+\end{minipage}
+\end{document}
